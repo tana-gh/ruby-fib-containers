@@ -2,6 +2,9 @@
 
 Usage:
 ```
+$ docker build -t ruby-fib .
+  ...
+
 $ docker network create mynet
   ...
 
