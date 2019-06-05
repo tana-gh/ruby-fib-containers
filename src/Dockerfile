@@ -1,0 +1,3 @@
+FROM ruby
+
+WORKDIR /myapp

@@ -1,0 +1,24 @@
+version: '3'
+services:
+  fib1:
+    image  : ruby-fib
+    command: ruby fib-server.rb ruby-fib_fib2_1 50000
+    tty    : true
+    expose:
+      - 50000
+    volumes:
+      - .:/myapp
+    ports:
+      - 50000:50000
+  fib2:
+    image  : ruby-fib
+    command: ruby fib-server.rb ruby-fib_fib1_1 50000
+    tty    : true
+    expose:
+      - 50000
+    volumes:
+      - .:/myapp
+networks:
+  default:
+    external:
+      name: mynet
