@@ -4,6 +4,9 @@ if ARGV.count != 2
   raise 'Illegal argument count'
 end
 
+# @param address [String]
+# @param port    [String]
+# @param sec     [Fixnum]
 def accept(address, port, sec)
   serv = TCPServer.new(port)
   serv.listen(1)
@@ -22,6 +25,8 @@ ensure
   serv&.close
 end
 
+# @param  serv [TCPServer]
+# @return [Array<(Boolean, Fixnum, Fixnum)>]
 def get_i(serv)
   rx  = serv.accept
   str = rx.gets&.chomp
@@ -47,6 +52,10 @@ ensure
   rx&.close
 end
 
+# @param address [String]
+# @param port    [String]
+# @param i1      [Fixnum]
+# @param i2      [Fixnum]
 def send_i(address, port, i1, i2)
   str = fib(i1, i2)
   
@@ -56,6 +65,9 @@ ensure
   tx&.close
 end
 
+# @param  i1 [Fixnum]
+# @param  i2 [Fixnum]
+# @return [String]
 def fib(i1, i2)
   "#{i2} #{i1 + i2}"
 end
